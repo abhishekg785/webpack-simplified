@@ -6,7 +6,10 @@
   "scripts": {
     "build:prod": "webpack --env.mode production",
     "build:dev": "webpack --env.mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prod:analyze": "npm run build:prod -- --env.presets analyze",
+    "prod:compress": "npm run build:prod -- --env.presets compress",
+    "dev:analyze": "npm run build:dev -- --env.presets analyze",
+    "prod:analyze:compress": "npm run build:prod -- --env.presets analyze --env.presets compress"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,9 @@
   },
   "homepage": "https://github.com/abhishekg785/webpack-simplified#readme",
   "devDependencies": {
+    "compression-webpack-plugin": "^2.0.0",
     "webpack": "^4.30.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.0",
     "webpack-merge": "^4.2.1"
   }
