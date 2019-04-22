@@ -11,6 +11,15 @@ module.exports = ({ mode, presets } = { mode: "production", presets: []}) => {
         output: {
             filename: "[name].js"
         },
+        module: {
+            rules: [
+                {
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: /node_modules/,
+                }
+            ]
+        },
         plugins: [
             new webpack.ProgressPlugin(),
         ]
