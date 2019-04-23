@@ -1,0 +1,42 @@
+webpcack simplified
+---------------
+Simple webpack config and structure, nothing fancy!
+
+Webpack is an awesome tool, I make the use of it on a regular basis in my web projects.
+
+From helping in code-splitting to applying various other optimizations on build time, it's awesome!
+
+This is a simple webpcack structure that I usually follow ( might change ), I like it, it's simple and gives
+you flexibility.
+
+It does not contain too much, plugins can be added and removed, I have focused more on the configuration and the structure.
+
+Contents:
+---------
+It contains a webpack.config.js file which it present at the root of the project. This file is the entry point and responsible for creating
+the final webpack config on the basis of the given env and presets.
+
+build-utils dir contains all the code build related stuff, which is mainly webpack related stuff.
+It contains:
+    webpack.development.js ( webpack --env.mode development)
+    webpack.production.js ( webpack --env.mode production )
+
+So if you do:  `npm run build:dev` , make use of webpack.development.js
+and same for `npm run build:prod`, make use of webpack.production.js
+
+It also contains : loadPresets.js file, which is responsible for loading the presets you need.
+It loads the presets from the `presets` dir present inside `build-utils` dir.
+
+So for example, if you wanna analyze the modules in your project, simply add the `webpack.analyze.js` (with the webpack bundle analyzer plugin inside the file) inside `presets` dir,
+and it will load from there given that you include it in the script like: `--presets analyze,
+
+similarly for compress, add `webpack.compress.js` in `presets` dir, and it will be loaded from there using `--presets compress`.
+
+So, `webpack --env.mode production --presets compress`, will apply compress preset in prod env.
+
+You can also apply multiple presets at once like: `webpack --env.mode production --presets compress --presets analyze`
+
+Check the `package.json` files for the used scripts.
+
+
+
